@@ -5,7 +5,10 @@
 		</div>
 		<ul class='list-group list-group-flush'>
 			<li class='list-group-item'>{{post.body}}</li>
-			<li class='list-group-item'>{{post.date_created}}</li>
+			<li class='list-group-item'>Created by
+				{{user.name}}
+				on
+				{{post.date_created}}</li>
 		</ul>
 	</div>
 {{/each}}
