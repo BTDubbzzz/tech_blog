@@ -1,7 +1,12 @@
-<h2><button><a href='/dashboard'>Back</a></button></h2>
-
+{{#if logged_in}}
+	<h2><button><a href='/dashboard'>Back</a></button></h2>
+{{/if}}
 <div class='text-center'>
 	<h2>{{header}}</h2>
 	<p>{{body}}</p>
 	<p>Created by {{user.name}} on {{date_created}}</p>
 </div>
+{{#if my_post}}
+	<p><button id='del-button' data-id='{{id}}'>DEL</button></p>
+{{/if}}
+<script src='/js/post.js'></script>

@@ -32,16 +32,20 @@ router.get('/post/:id', async (req, res) => {
 			include: [
 				{
 					model: User,
-					attributes: ['name'],
+					attributes: ['name', 'id'],
 				},
 			],
 		});
 
 		const post = postData.get({ plain: true });
+		console.log('post :>> ', post);
+		const myPost = req.session.user_id === post.user.id;
+		console.log('myPost :>> ', myPost);
 
 		res.render('post', {
 			...post,
 			logged_in: req.session.logged_in,
+			my_post: myPost,
 		});
 	} catch (err) {
 		res.status(500).json(err);

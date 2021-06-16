@@ -1,14 +1,15 @@
 {{#each posts as |post|}}
-	<div class='card' style='width: 18rem;'>
-		<div class='card-header'>
-			{{post.header}}
+	<a href='/post/{{post.id}}'>
+		<div class='card' style='width: 18rem;'>
+			<div class='card-header'>
+				{{post.header}}
+			</div>
+			<ul class='list-group list-group-flush'>
+				<li class='list-group-item'>Created by
+					{{user.name}}
+					on
+					{{post.date_created}}</li>
+			</ul>
 		</div>
-		<ul class='list-group list-group-flush'>
-			<li class='list-group-item'>{{post.body}}</li>
-			<li class='list-group-item'>Created by
-				{{user.name}}
-				on
-				{{post.date_created}}</li>
-		</ul>
-	</div>
+	</a>
 {{/each}}

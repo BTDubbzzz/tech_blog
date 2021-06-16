@@ -42,6 +42,14 @@ if (document.querySelector('.new-post-form')) {
 		.querySelector('.new-post-form')
 		.addEventListener('submit', newFormHandler);
 }
-document
-	.querySelector('.post-list')
-	.addEventListener('click', delButtonHandler);
+
+if (document.querySelector('.post-list')) {
+	document
+		.querySelector('.post-list')
+		.addEventListener('click', delButtonHandler);
+}
+if (document.querySelector('#del-button')) {
+	document
+		.querySelector('#del-button')
+		.addEventListener('click', delButtonHandler);
+}
