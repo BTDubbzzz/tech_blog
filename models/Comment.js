@@ -1,7 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const User = require('./User');
 
-class Comment extends Model {}
+class Comment extends Model {
+	async getCommentUserName(id) {
+		const userData = await User.findByPk(id);
+		console.log('userData :>> ', userData);
+		return userData;
+	}
+}
 
 Comment.init(
 	{

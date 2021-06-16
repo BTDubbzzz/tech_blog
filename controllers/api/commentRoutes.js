@@ -2,6 +2,30 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/comments/:id', async (req, res) => {
+	try {
+		const commentData = await Post.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					attributes: ['name', 'id'],
+				},
+			],
+		});
+
+		const comment = commentData.get({ plain: true });
+		console.log('comment :>> ', comment);
+
+		res.render('post', {
+			...post,
+			logged_in: req.session.logged_in,
+			my_post: myPost,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.post('/', withAuth, async (req, res) => {
 	try {
 		const newComment = await Comment.create({
