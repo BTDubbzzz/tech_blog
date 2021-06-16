@@ -21,6 +21,30 @@ const newFormHandler = async (event) => {
 	}
 };
 
+const newCommentHandler = async (event) => {
+	event.preventDefault();
+
+	const body = document.querySelector('#comment-body').value.trim();
+	const post_id = event.target.getAttribute('data-post-id');
+
+	if (body && post_id) {
+		const response = await fetch(`/api/comments`, {
+			method: 'POST',
+			body: JSON.stringify({ body, post_id }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+
+		if (response.ok) {
+			console.log('test');
+			document.location.reload();
+		} else {
+			alert('Failed to create comment');
+		}
+	}
+};
+
 const delButtonHandler = async (event) => {
 	if (event.target.hasAttribute('data-id')) {
 		const id = event.target.getAttribute('data-id');
@@ -52,4 +76,10 @@ if (document.querySelector('#del-button')) {
 	document
 		.querySelector('#del-button')
 		.addEventListener('click', delButtonHandler);
+}
+
+if (document.querySelector('.new-comment-form')) {
+	document
+		.querySelector('.new-comment-form')
+		.addEventListener('submit', newCommentHandler);
 }
