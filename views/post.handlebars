@@ -5,7 +5,7 @@
 <div class='text-center'>
 	<h2>{{header}}</h2>
 	<p>{{body}}</p>
-	<p>Created by {{user.name}} on {{date_created}}</p>
+	<p>Created by {{user.name}} on {{format_date date_created}}</p>
 </div>
 {{#if my_post}}
 	<p><button id='del-button' data-id='{{id}}'>DEL</button></p>

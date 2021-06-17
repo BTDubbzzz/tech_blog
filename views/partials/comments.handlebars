@@ -2,7 +2,7 @@
 
 	<div class='card' style='width: 18rem;'>
 		<p>{{comment.body}}</p>
-		<p>{{comment.date_created}}</p>
 		<p>By {{comment.user.name}}</p>
+		<p>on {{format_date comment.date_created}}</p>
 	</div>
 {{/each}}
