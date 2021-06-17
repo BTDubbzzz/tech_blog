@@ -1,14 +1,19 @@
-<div class='col-md-6'>
-	<h3>Create a New post:</h3>
+<h3>Create a New post:</h3>
+<div class='d-flex justify-content-center'>
 
-	<form class='form new-post-form'>
+	<form class='form new-post-form col-6'>
 		<div class='form-group'>
 			<label for='post-header'>Post Header:</label>
-			<input class='form-input' type='text' id='post-header' name='post-header' />
+			<input
+				class='form-control'
+				type='text'
+				id='post-header'
+				name='post-header'
+			/>
 		</div>
 		<div class='form-group'>
 			<label for='post-body'>Post Body:</label>
-			<textarea class='form-input' id='post-body' name='post-body'></textarea>
+			<textarea class='form-control' id='post-body' name='post-body'></textarea>
 		</div>
 		<div class='form-group'>
 			<button type='submit' class='btn btn-primary'>Create</button>

@@ -1,4 +1,4 @@
-{{#if logged_in}}
+{{!-- {{#if logged_in}}
 	<h2><button><a href='/dashboard'>Back to dashboard</a></button></h2>
 	<h2><button><a href='/'>Back to Home</a></button></h2>
 {{/if}}
@@ -9,24 +9,82 @@
 </div>
 {{#if my_post}}
 	<p><button id='del-button' data-id='{{id}}'>DEL</button></p>
-  <a href="/post/update/{{id}}"><button>EDIT</button></a>
+	<a href='/post/update/{{id}}'><button>EDIT</button></a>
 {{/if}}
 
-<h2>Comments</h2>
+<h2>Comments</h2> --}}
 
-{{> comments}}
+{{!-- {{> comments}} --}}
 
-{{#if logged_in}}
-<h3>Comment here:</h3>
+{{!-- {{#if logged_in}}
+	<h3>Comment here:</h3>
 
-    <form class="form new-comment-form" data-post-id='{{id}}'>
-      <div class="form-group">
-        <label for="comment-body">comment:</label>
-        <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-{{/if}}
+	<form class='form new-comment-form' data-post-id='{{id}}'>
+		<div class='form-group'>
+			<label for='comment-body'>comment:</label>
+			<textarea
+				class='form-input'
+				id='comment-body'
+				name='comment-body'
+			></textarea>
+		</div>
+		<div class='form-group'>
+			<button type='submit' class='btn btn-primary'>Submit</button>
+		</div>
+	</form>
+{{/if}} --}}
+
+<div class='container mt-5'>
+	<div class='row'>
+		<div class='col-lg-8'>
+			<article>
+				<header class='mb-4'>
+					<h1 class='fw-bolder mb-1'>{{header}}</h1>
+					<div class='text-muted fst-italic mb-2'>Posted on
+						{{format_date date_created}}
+						by
+						{{user.name}}</div>
+				</header>
+				<p>{{body}}</p>
+			</article>
+      {{#if my_post}}
+      <a class="btn btn-warning" href="/post/update/{{id}}">Edit</a>
+      <button class="btn btn-danger" id="del-button" data-id="{{id}}">Delete</button>
+      {{/if}}
+
+
+			<section class='mb-5 mt-3'>
+				<div class='card bg-light'>
+					<div class='card-body'>
+
+
+						<form class='mb-4 form new-comment-form' data-post-id="{{id}}">
+              <textarea
+								class='form-control'
+                id="comment-body"
+                name="comment-body"
+								rows='3'
+								placeholder='Join the discussion and leave a comment!'
+							></textarea>
+              <div class="form-group">
+                <button type="submit" class="mt-2 btn btn-sm btn-primary">Submit</button>
+              </div>
+            </form>
+
+
+
+            {{> comments}}						
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class='col-lg-4'>
+			<div class='card mb-4'>
+				<div class='card-header'>Posted by {{user.name}}</div>
+				<div class='card-body'>About {{user.name}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script src='/js/post.js'></script>

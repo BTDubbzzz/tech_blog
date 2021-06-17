@@ -23,19 +23,33 @@
 	</div>
 </header>
 
-{{#each posts as |post|}}
+<div class='d-flex justify-content-center'>
+	<div class='col-6'>
+		{{#each posts as |post|}}
 
-	<div class='text-center d-flex justify-content-center'>
-		<div class='card col-6'>
-			<div class='card-body'>
-				<div class='small text-muted'>{{format_date post.date_created}}
-					by
-					{{user.name}}</div>
-				<h2 class='card-title'>{{post.header}}</h2>
-				<p class='card-text'>{{post.body}}</p>
-				<a class='btn btn-primary' href='/post/{{post.id}}'>Read more →</a>
+			<div class='text-center'>
+				<div class='card mt-3'>
+					<div class='card-body'>
+						<div class='small text-muted'>created
+							{{format_date post.date_created}}
+							by
+							<a href=''>{{user.name}}</a></div>
+						<h2 class='card-title'>{{post.header}}</h2>
+						<p class='card-text'>{{post.body}}</p>
+						<a class='btn btn-primary' href='/post/{{post.id}}'>Read more →</a>
+					</div>
+				</div>
 			</div>
+
+		{{/each}}
+	</div>
+	<div class='card col-3 align-self-start mt-3'>
+		<div class='card-header'><h3>UserName</h3></div>
+		<div class='card-body'>This will have multiple profile items in it
+			<p></p>
+			<p>Total number of posts created: 000</p>
+			<p>Total number of comments created: 000</p>
+			<p>Last time seen online: xDay</p>
 		</div>
 	</div>
-
-{{/each}}
+</div>
