@@ -101,6 +101,7 @@ if (document.querySelector('.post-list')) {
 // 		.addEventListener('click', delButtonHandler);
 // }
 
+//capture all delete buttons in one array
 const delBtns = document.querySelectorAll('.del-button');
 
 if (document.querySelector('.del-button')) {
