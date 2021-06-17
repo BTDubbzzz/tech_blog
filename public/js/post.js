@@ -47,6 +47,7 @@ const newCommentHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+	console.log('clicked');
 	if (event.target.hasAttribute('data-id')) {
 		const id = event.target.getAttribute('data-id');
 
@@ -94,10 +95,21 @@ if (document.querySelector('.post-list')) {
 		.querySelector('.post-list')
 		.addEventListener('click', delButtonHandler);
 }
-if (document.querySelector('#del-button')) {
-	document
-		.querySelector('#del-button')
-		.addEventListener('click', delButtonHandler);
+// if (document.querySelector('#del-button')) {
+// 	document
+// 		.querySelector('#del-button')
+// 		.addEventListener('click', delButtonHandler);
+// }
+
+const delBtns = document.querySelectorAll('.del-button');
+
+if (document.querySelector('.del-button')) {
+	delBtns.forEach((btn) => {
+		btn.addEventListener('click', delButtonHandler);
+	});
+	// document
+	// 	.querySelector('.del-button')
+	// 	.addEventListener('click', delButtonHandler);
 }
 if (document.querySelector('.update-post-form')) {
 	document
