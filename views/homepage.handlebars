@@ -14,7 +14,7 @@
 	</a>
 {{/each}} --}}
 
-<header class='py-5 bg-light border-bottom mb-4'>
+<header class='py-5 bg-info border-bottom mb-4'>
 	<div class='container'>
 		<div class='text-center my-5'>
 			<h1 class='fw-bolder'>Welcome to Tech Blog!</h1>
@@ -23,7 +23,7 @@
 	</div>
 </header>
 
-<div class='d-flex justify-content-center'>
+<div class='d-flex justify-content-center bg-secondary py-5'>
 	<div {{#if logged_in}}class='col-6' {{else}} class="col-9" {{/if}}>
 		{{#each posts as |post|}}
 
