@@ -1,4 +1,4 @@
-{{#each posts as |post|}}
+{{!-- {{#each posts as |post|}}
 	<a href='/post/{{post.id}}'>
 		<div class='card' style='width: 18rem;'>
 			<div class='card-header'>
@@ -12,4 +12,30 @@
 			</ul>
 		</div>
 	</a>
+{{/each}} --}}
+
+<header class='py-5 bg-light border-bottom mb-4'>
+	<div class='container'>
+		<div class='text-center my-5'>
+			<h1 class='fw-bolder'>Welcome to Tech Blog!</h1>
+			<p class='lead mb-0'>Check out our latest posts from contributors below!</p>
+		</div>
+	</div>
+</header>
+
+{{#each posts as |post|}}
+
+	<div class='text-center d-flex justify-content-center'>
+		<div class='card col-6'>
+			<div class='card-body'>
+				<div class='small text-muted'>{{format_date post.date_created}}
+					by
+					{{user.name}}</div>
+				<h2 class='card-title'>{{post.header}}</h2>
+				<p class='card-text'>{{post.body}}</p>
+				<a class='btn btn-primary' href='/post/{{post.id}}'>Read more →</a>
+			</div>
+		</div>
+	</div>
+
 {{/each}}
