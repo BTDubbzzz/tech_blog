@@ -41,7 +41,7 @@
 							by
 							<a href=''>{{user.name}}</a></div>
 						<h2 class='card-title'>{{post.header}}</h2>
-						<p class='card-text'>{{post.body}}</p>
+						<p class='card-text'>{{truncate_post post.body}}</p>
 						<a class='btn btn-primary' href='/post/{{post.id}}'>Read more →</a>
 						<button
 							id='del-button'
