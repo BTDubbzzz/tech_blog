@@ -9,6 +9,7 @@
 </div>
 {{#if my_post}}
 	<p><button id='del-button' data-id='{{id}}'>DEL</button></p>
+  <a href="/post/update/{{id}}"><button>EDIT</button></a>
 {{/if}}
 
 <h2>Comments</h2>
@@ -24,7 +25,7 @@
         <textarea class="form-input" id="comment-body" name="comment-body"></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" data-post-id='3'>Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
 {{/if}}

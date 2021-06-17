@@ -60,6 +60,27 @@ const delButtonHandler = async (event) => {
 		}
 	}
 };
+const updateButtonHandler = async (event) => {
+	event.preventDefault();
+
+	const header = document.querySelector('#post-header').value.trim();
+	const body = document.querySelector('#post-body').value.trim();
+	const id = event.target.getAttribute('data-post-id');
+
+	const response = await fetch(`/api/posts/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify({ header, body }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (response.ok) {
+		document.location.replace(`/post/${id}`);
+	} else {
+		alert('Failed to delete project');
+	}
+};
 
 if (document.querySelector('.new-post-form')) {
 	document
@@ -76,6 +97,11 @@ if (document.querySelector('#del-button')) {
 	document
 		.querySelector('#del-button')
 		.addEventListener('click', delButtonHandler);
+}
+if (document.querySelector('.update-post-form')) {
+	document
+		.querySelector('.update-post-form')
+		.addEventListener('submit', updateButtonHandler);
 }
 
 if (document.querySelector('.new-comment-form')) {

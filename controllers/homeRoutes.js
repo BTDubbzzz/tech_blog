@@ -35,7 +35,8 @@ router.get('/post/:id', async (req, res) => {
 					attributes: ['name', 'id'],
 				},
 				{
-					model: Comment, include: [{model: User, attributes: ['name', 'id']}],
+					model: Comment,
+					include: [{ model: User, attributes: ['name', 'id'] }],
 				},
 			],
 		});
@@ -45,6 +46,34 @@ router.get('/post/:id', async (req, res) => {
 		console.log('post :>> ', post);
 
 		res.render('post', {
+			...post,
+			logged_in: req.session.logged_in,
+			my_post: myPost,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+router.get('/post/update/:id', withAuth, async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					attributes: ['name', 'id'],
+				},
+				{
+					model: Comment,
+					include: [{ model: User, attributes: ['name', 'id'] }],
+				},
+			],
+		});
+
+		const post = postData.get({ plain: true });
+		const myPost = req.session.user_id === post.user.id;
+		console.log('post :>> ', post);
+
+		res.render('updatepost', {
 			...post,
 			logged_in: req.session.logged_in,
 			my_post: myPost,
