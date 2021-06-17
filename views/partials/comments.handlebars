@@ -4,6 +4,6 @@
 		<p>{{comment.body}}</p>
 		<p>{{comment.date_created}}</p>
 		<p>By User id # {{comment.user_id}}</p>
-		<p>user {{get_comment_username comment.user_id}}</p>
+		<p>user {{comment.user.name}}</p>
 	</div>
 {{/each}}
