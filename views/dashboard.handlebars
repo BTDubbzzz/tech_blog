@@ -43,7 +43,11 @@
 						<h2 class='card-title'>{{post.header}}</h2>
 						<p class='card-text'>{{post.body}}</p>
 						<a class='btn btn-primary' href='/post/{{post.id}}'>Read more →</a>
-						<button class='btn btn-danger' data-id='{{post.id}}'>Delete</button>
+						<button
+							id='del-button'
+							class='btn btn-danger'
+							data-id='{{post.id}}'
+						>Delete</button>
 					</div>
 				</div>
 			</div>

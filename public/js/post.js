@@ -40,6 +40,7 @@ const newCommentHandler = async (event) => {
 			console.log('test');
 			document.location.reload();
 		} else {
+			alert(response.statusText);
 			alert('Failed to create comment');
 		}
 	}

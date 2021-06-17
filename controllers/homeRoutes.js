@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
-		// Get all posts and JOIN with user data
 		const postData = await Post.findAll({
 			include: [
 				{
@@ -13,10 +12,8 @@ router.get('/', async (req, res) => {
 			],
 		});
 
-		// Serialize data so the template can read it
 		const posts = postData.map((post) => post.get({ plain: true }));
 
-		// Pass serialized data and session flag into template
 		res.render('homepage', {
 			posts,
 			logged_in: req.session.logged_in,
@@ -54,6 +51,7 @@ router.get('/post/:id', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
+
 router.get('/post/update/:id', withAuth, async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
@@ -85,7 +83,6 @@ router.get('/post/update/:id', withAuth, async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
 	try {
-		// Find the logged in user based on the session ID
 		const userData = await User.findByPk(req.session.user_id, {
 			attributes: { exclude: ['password'] },
 			include: [{ model: Post }],
@@ -103,13 +100,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 router.get('/newpost', withAuth, (req, res) => {
-	// If the user is already logged in, redirect the request to another route
-
-	res.render('newpost');
+	res.render('newpost', {
+		logged_in: true,
+	});
 });
 
 router.get('/signup', (req, res) => {
-	// If the user is already logged in, redirect the request to another route
 	if (req.session.logged_in) {
 		res.redirect('/dashboard');
 		return;
@@ -119,7 +115,6 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-	// If the user is already logged in, redirect the request to another route
 	if (req.session.logged_in) {
 		res.redirect('/dashboard');
 		return;

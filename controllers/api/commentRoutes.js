@@ -28,6 +28,9 @@ router.get('/comments/:id', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
 	try {
+		if (true === true) {
+			res.status(401).json({ message: 'You must log in to comment!' });
+		}
 		const newComment = await Comment.create({
 			...req.body,
 			user_id: req.session.user_id,
